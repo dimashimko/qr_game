@@ -4,5 +4,5 @@ class QrCode {
 
   QrCode({ this.number, this.isFound});
 
-//commit 10 - new branch?
+//commit 11
 }
