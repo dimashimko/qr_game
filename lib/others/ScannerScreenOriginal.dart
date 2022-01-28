@@ -1,3 +1,4 @@
+/*
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -157,4 +158,4 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller?.dispose();
     super.dispose();
   }
-}
+}*/

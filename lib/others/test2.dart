@@ -1,3 +1,4 @@
+/*
 typedef void LoggerOutputFunction(String msg);
 
 class Logger {
@@ -20,4 +21,4 @@ void main() {
   l.log('Hello World');
   l.out = timestampLoggerOutputFunction;
   l.log('Hello World');
-}
+}*/

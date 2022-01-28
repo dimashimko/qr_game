@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -154,4 +155,4 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller.dispose();
     super.dispose();
   }
-}
+}*/

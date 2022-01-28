@@ -3,9 +3,10 @@ import 'dart:math';
 import 'package:qr_game/models/QrCode.dart';
 
 class QrGame {
-  int quantity;
-  int range;
-  List<QrCode> list;
+  int quantity = 20;
+  int range =3;
+  List<QrCode> list = List.generate(0, (index) => QrCode(0, false));
+
 
   // constructor
   QrGame(this.quantity, this.range){

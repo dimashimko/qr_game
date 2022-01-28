@@ -1,3 +1,4 @@
+/*
 import 'dart:math';
 
 void main (){
@@ -25,4 +26,4 @@ class Person{
   void display(){
     print("Name: $name Age: $age");
   }
-}
+}*/
