@@ -13,7 +13,7 @@ class QrGame {
   }
 
   List<QrCode> _generateList() {
-    list = List<QrCode>.filled(quantity, null);
+    list = List<QrCode>.filled(quantity, QrCode(0, false));
     var random = Random();
     for(int i = 0; i<list.length; i++){
       var newInt = 0;
@@ -24,7 +24,8 @@ class QrGame {
         if(newInt != list[i-1].number) break;
       }
 
-      list[i] = QrCode(number:newInt, isFound: false);
+      // list[i] = QrCode(number:newInt, isFound: false);
+      list[i] = QrCode(newInt, false);
     }
     return list;
   }
