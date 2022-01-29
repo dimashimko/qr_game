@@ -4,7 +4,7 @@ import 'package:qr_game/screens/ScannerScreen.dart';
 import 'package:qr_game/widgets/qrItem.dart';
 
 class ListOfQrScreen extends StatefulWidget {
-  QrGame game;
+  QrGame game = QrGame(1, 1);
 
   // constructor
   ListOfQrScreen(QrGame g) {
@@ -84,14 +84,14 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    // WidgetsBinding.instance.addObserver(this);
     print('************ initState ************');
   }
 
   @override
   void didChangeDependencies () {
     super.didChangeDependencies ();
-    WidgetsBinding.instance.addObserver(this);
+    // WidgetsBinding.instance.addObserver(this);
     print('************ didChangeDependencies  ************');
   }
 
@@ -104,7 +104,7 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    // WidgetsBinding.instance.removeObserver(this);
     super.dispose();
     print('************ dispose ************');
 

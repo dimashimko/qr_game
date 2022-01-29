@@ -20,7 +20,8 @@ Future<Null> saveData(String nameGame, String data) async{
 Future<String> loadData(String nameGame) async {
   SharedPreferences _prefs = await SharedPreferences.getInstance();
 
-  String s = _prefs.getString(nameGame);
+
+  String? s = _prefs.getString(nameGame);
   if (s == null) s='not available';
   print('loaded: ${_prefs.getString(nameGame)}');
 

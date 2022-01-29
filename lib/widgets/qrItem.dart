@@ -57,4 +57,4 @@ Color getColor(int numberOfFoundCodes, int index) {
   return Colors.grey;
 }
 
-String numberToString( int num) {}
+// String numberToString( int num) {}
