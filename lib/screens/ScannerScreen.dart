@@ -68,9 +68,10 @@ class _QRViewExampleState extends State<QRViewExample> {
                 children: <Widget>[
                   if (result != null)
                     Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+                        // 'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
+                        'Required Number: ${widget.requiredNumber.toString()}   Last find: ${result!.code}')
                   else
-                    const Text('Scan a code'),
+                     Text('Required Number: ${widget.requiredNumber.toString()}'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,6 +120,8 @@ class _QRViewExampleState extends State<QRViewExample> {
                         child: ElevatedButton(
                           onPressed: () async {
                             await controller?.pauseCamera();
+                            Navigator.pop(context, result?.code);
+
                           },
                           child: const Text('pause',
                               style: TextStyle(fontSize: 20)),
@@ -173,8 +176,21 @@ class _QRViewExampleState extends State<QRViewExample> {
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+
+        if (result?.code == widget.requiredNumber.toString()) {
+          print("WASFOUND: ${result?.code}");
+          comeBack();
+          // Future.microtask(comeBack);
+        }
+
       });
     });
+  }
+
+  void comeBack({BuildContext? cont}) {
+    // dispose(); - don't need!
+    controller?.dispose();
+    Navigator.pop(context, result?.code);
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
