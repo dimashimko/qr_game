@@ -1,10 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-main(){
-  String mameGame ='qq';
-  saveData('qq', 'dima');
-  print(loadData(mameGame));
-}
+// main(){
+//   String mameGame ='qq';
+//   saveData('qq', 'dima');
+//   print(loadData(mameGame));
+// }
 
 Future<Null> saveData(String nameGame, String data) async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -22,8 +22,10 @@ Future<String> loadData(String nameGame) async {
 
 
   String? s = _prefs.getString(nameGame);
-  if (s == null) s='not available';
-  print('loaded: ${_prefs.getString(nameGame)}');
+  if (s == null) {
+    s='not available';
+  }
+  print('loaded: ${s.toString()}');
 
   return s;
 }

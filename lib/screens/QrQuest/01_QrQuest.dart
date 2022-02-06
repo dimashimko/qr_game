@@ -21,7 +21,7 @@ class _QrQuestState extends State<QrQuest> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(onPressed: () {saveData('qq', 'dima');}, child: Text('Save Data')),
-              ElevatedButton(onPressed: () {print(loadData('qq'));}, child: Text('Load Data')),
+              ElevatedButton(onPressed: () {loadData('qq');}, child: Text('Load Data')),
               ElevatedButton(
                   onPressed: () {
                     _goToSettingScreen(context);

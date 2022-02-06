@@ -4,7 +4,7 @@ import 'package:qr_game/screens/ScannerScreen.dart';
 import 'package:qr_game/widgets/qrItem.dart';
 
 class ListOfQrScreen extends StatefulWidget {
-  QrGame game = QrGame(1, 1);
+  QrGame game = QrGame(0, 0);
 
   // constructor
   ListOfQrScreen(QrGame g) {
@@ -37,7 +37,8 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
           itemBuilder: (context, index) => Container(
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             // width: 160,
-            height: MediaQuery.of(context).size.height / 7,
+            // height: MediaQuery.of(context).size.height / 7,
+            height: 70,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               shape: BoxShape.rectangle,

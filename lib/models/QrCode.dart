@@ -1,11 +1,8 @@
 class QrCode {
-  int number;
-  bool isFound;
+  int number = 0;
+  bool isFound = false;
 
-  QrCode( this.number, this.isFound);
-  // QrCode({required this.number, required this.isFound});
-
-
+  QrCode({required this.number, required this.isFound});
 
 
 //commit 12

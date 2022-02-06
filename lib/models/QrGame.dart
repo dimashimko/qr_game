@@ -5,7 +5,7 @@ import 'package:qr_game/models/QrCode.dart';
 class QrGame {
   int quantity = 20;
   int range =3;
-  List<QrCode> list = List.generate(0, (index) => QrCode(0, false));
+  List<QrCode> list = List.generate(0, (index) => QrCode(number:0, isFound: false));
 
 
   // constructor
@@ -14,7 +14,7 @@ class QrGame {
   }
 
   List<QrCode> _generateList() {
-    list = List<QrCode>.filled(quantity, QrCode(0, false));
+    list = List<QrCode>.filled(quantity, QrCode(number:0, isFound: false));
     var random = Random();
     for(int i = 0; i<list.length; i++){
       var newInt = 0;
@@ -26,7 +26,7 @@ class QrGame {
       }
 
       // list[i] = QrCode(number:newInt, isFound: false);
-      list[i] = QrCode(newInt, false);
+      list[i] = QrCode(number:newInt, isFound: false);
     }
     return list;
   }
@@ -41,11 +41,6 @@ class QrGame {
 
   List<QrCode> getList() => list;
 }
-
-
-
-
-
 
 void main (){
   var game = QrGame(20, 10);

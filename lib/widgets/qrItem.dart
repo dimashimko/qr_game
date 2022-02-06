@@ -10,12 +10,12 @@ Widget qrItem(context, QrGame game, index, ValueChanged<int> goToScanner) {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            '${index + 1}',
-          ),
-          SizedBox(
-            width: 8,
-          ),
+          // Text(
+          //   '${index + 1}',
+          // ),
+          // SizedBox(
+          //   width: 8,
+          // ),
           Image(
             image: AssetImage('assets/images/qrQuestion.png'),
           ),
