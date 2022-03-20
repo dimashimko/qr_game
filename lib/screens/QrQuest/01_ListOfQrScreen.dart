@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:qr_game/models/QrGame.dart';
 import 'package:qr_game/screens/ScannerScreen.dart';
+import 'package:qr_game/utilities/save_load_Data.dart';
 import 'package:qr_game/widgets/qrItem.dart';
 
 class ListOfQrScreen extends StatefulWidget {
@@ -66,19 +69,30 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     int number = int.tryParse(result) ?? -1;
 
     setState(() {
-      if (number == widget.game.list[index].number)
+      if (number == widget.game.list[index].number) {
         widget.game.list[index].isFound = true;
+        saveData('qq', json.encode(widget.game));
+      }
     });
   }
 
 
+/*  @protected
+  void didUpdateWidget(Home oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }*/
 
-
-
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('state = $state');
+    print('************ didChangeAppLifecycleState ************');
+  }
 
   @override
   void didChangeMetrics() {
     setState(() {});
+    print('************ didChangeMetrics ************');
+
     // This will be triggered by changes in orientation.
   }
 
@@ -90,24 +104,30 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
   }
 
   @override
-  void didChangeDependencies () {
-    super.didChangeDependencies ();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     // WidgetsBinding.instance.addObserver(this);
     print('************ didChangeDependencies  ************');
   }
 
   @override
-  void deactivate(){
+  void deactivate() {
+    saveData('qq', json.encode(widget.game));
+
     super.deactivate();
     print('************ deactivate ************');
   }
 
-
   @override
   void dispose() {
+    saveData('qq', json.encode(widget.game));
+
     // WidgetsBinding.instance.removeObserver(this);
     super.dispose();
     print('************ dispose ************');
-
   }
+}
+
+void didChangeAppLifecycleState(AppLifecycleState state) {
+  print('hihihi');
 }

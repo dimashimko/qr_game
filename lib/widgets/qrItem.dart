@@ -17,7 +17,7 @@ Widget qrItem(context, QrGame game, index, ValueChanged<int> goToScanner) {
           //   width: 8,
           // ),
           Image(
-            image: AssetImage('assets/images/qrQuestion.png'),
+            image: AssetImage('asset/images/qrQuestion.png'),
           ),
         ],
       ),
@@ -50,9 +50,11 @@ Widget qrItem(context, QrGame game, index, ValueChanged<int> goToScanner) {
 
 Color getColor(int numberOfFoundCodes, int index) {
   if (index<numberOfFoundCodes){
-    return Colors.blue;
+    // return Colors.blue;
+    return Color(0xFF995511);
   } else if(index == numberOfFoundCodes){
-    return Colors.green;
+    // return Colors.green;
+    return Color(0xFF995511);
   }
   return Colors.grey;
 }

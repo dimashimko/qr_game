@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'QrQuest/01_QrQuest.dart';
+import 'QrQuest/01_QrQuestMenuScreen.dart';
 import 'QrQuest/01_SettingScreen.dart';
 
 class TitleScreen extends StatefulWidget {
@@ -79,7 +79,7 @@ class _TitleScreenState extends State<TitleScreen> {
 
   // 01 QrQuest
   void _goToQrQuest(BuildContext context) async {
-    Route routeToQrQuest = MaterialPageRoute(builder: (context) => QrQuest());
+    Route routeToQrQuest = MaterialPageRoute(builder: (context) => QrQuestMenuScreen());
     Navigator.push(context, routeToQrQuest);
   }
 }
