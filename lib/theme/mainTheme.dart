@@ -12,10 +12,11 @@ import 'package:flutter/material.dart';
 * */
 
 var primaryColor = const Color(0xFFc16c14);
-var primaryLightColor = const Color(0xFFff8b14);
+var primaryLightColor = const Color(0x55f99b46);
 var primaryDarkColor = const Color(0xFF8b4000);
 var green = const Color(0xFF00cf00);
 var red = const Color(0xFFFF0000);
+var mt = const Color.fromRGBO(253, 219, 0, 0.1);
 
 // Global Theme
 ThemeData myMainTheme = ThemeData(

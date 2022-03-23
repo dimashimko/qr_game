@@ -38,7 +38,6 @@ class _QrQuestMenuScreenState extends State<QrQuestMenuScreen> {
                   child: Text('Save Data2')),*/
               ElevatedButton(
                   onPressed: () {
-                    // loadData('qq');
                     _resumeGame(context);
                   },
                   child: Text('Resume game')),
@@ -60,8 +59,6 @@ class _QrQuestMenuScreenState extends State<QrQuestMenuScreen> {
   }
 
   void _resumeGame(BuildContext context) async {
-    String s = 'www';
-
     var gameStr = await loadData('qq');
 
 /*    QrGame game = QrGame.fromJson(json.decode(

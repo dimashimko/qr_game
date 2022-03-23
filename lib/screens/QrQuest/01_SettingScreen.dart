@@ -84,6 +84,7 @@ class _SettingScreenState extends State<SettingScreen> {
     Route routeToListOfQr = MaterialPageRoute(
         builder: (context) =>
             ListOfQrScreen(game));
-    Navigator.push(context, routeToListOfQr);
+
+    Navigator.pushReplacement(context, routeToListOfQr);
   }
 }
