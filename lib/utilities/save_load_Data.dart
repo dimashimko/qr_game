@@ -28,3 +28,5 @@ Future<String?> loadData(String nameGame) async {
 
   return s;
 }
+
+

@@ -13,14 +13,14 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  late Future<QrGame> savedGame;
+  late Future<QrGame> oldGame;
 
   @override
   void initState() {
     super.initState();
     print('************ MenuScreen initState  ************');
-
-    savedGame = getSavedGame();
+    print('loadGame when initState of MenuScreen');
+    oldGame = loadGame();
   }
 
   @override
@@ -31,7 +31,7 @@ class _MenuScreenState extends State<MenuScreen> {
           centerTitle: true,
         ),
         body: FutureBuilder<QrGame>(
-          future: savedGame,
+          future: oldGame,
           builder: (context, snapshot) {
             return Center(
               child: Column(
@@ -65,30 +65,25 @@ class _MenuScreenState extends State<MenuScreen> {
                   ]),
             );
 
-            return const Center(child: CircularProgressIndicator());
+            // return const Center(child: CircularProgressIndicator());
           },
         ));
   }
 
-  // New Game
-  void _goToSettingScreen(BuildContext context) async {
-    Route routeToSettingScreen =
-        MaterialPageRoute(builder: (context) => SettingScreen());
-    final result = await Navigator.push(context, routeToSettingScreen);
-/*    setState(() {
-      print('hi hi');
-      savedGame = getSavedGame();
-    });*/
-  }
+  _resumeGame(BuildContext context, QrGame oldGameFromSnapshot) async {
+    print('loadGame when button Resume pressed');
 
-  _resumeGame(BuildContext context, QrGame oldGame)  {
+    QrGame oldGameLast = await loadGame();
+
     Route routeToListOfQr =
-        MaterialPageRoute(builder: (context) => ListOfQrScreen(oldGame));
+        MaterialPageRoute(builder: (context) => ListOfQrScreen(oldGameFromSnapshot));
     Navigator.push(context, routeToListOfQr);
 
   }
 
-  Future<QrGame> getSavedGame() async {
+
+
+  Future<QrGame> loadGame() async {
     final savedGameStr = await loadData('qq');
 
     if (savedGameStr != null) {
@@ -99,6 +94,24 @@ class _MenuScreenState extends State<MenuScreen> {
     }
   }
 
+  refreshData(){
+    oldGame = loadGame();
+  }
+
+  // New Game
+  void _goToSettingScreen(BuildContext context) async {
+    Route routeToSettingScreen =
+    MaterialPageRoute(builder: (context) => SettingScreen());
+    await Navigator.push(context, routeToSettingScreen);
+
+/*    setState(() {
+      print('bbbbbbbbbbbb');
+      savedGame = loadGame();
+    });*/
+  }
+
+
+  // ************************************************************
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print('state = $state');

@@ -12,7 +12,7 @@ class ListOfQrScreen extends StatefulWidget {
   // constructor
   ListOfQrScreen(QrGame g) {
     game = g;
-    saveData('qq', json.encode(game)); // save data when new game is created
+
   }
 
   @override
@@ -72,7 +72,8 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     setState(() {
       if (number == widget.game.list[index].number) {
         widget.game.list[index].isFound = true;
-        saveData('qq', json.encode(widget.game));
+        print('save data when new qr was found');
+        saveData('qq', json.encode(widget.game)); // save data when new qr was found
       }
     });
   }
@@ -113,7 +114,8 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
 
   @override
   void deactivate() {
-    saveData('qq', json.encode(widget.game));
+    print('save data when ListOfQrScreen is close');
+    saveData('qq', json.encode(widget.game)); // save data when screen is close
 
     super.deactivate();
     print('************ ListOfQrScreen deactivate  ************');

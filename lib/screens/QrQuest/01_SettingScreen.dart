@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:qr_game/screens/QrQuest/01_ListOfQrScreen.dart';
 import 'package:qr_game/models/QrGame.dart';
 
 import 'package:qr_game/utilities/constants.dart';
+import 'package:qr_game/utilities/save_load_Data.dart';
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -86,5 +88,8 @@ class _SettingScreenState extends State<SettingScreen> {
             ListOfQrScreen(game));
 
     Navigator.pushReplacement(context, routeToListOfQr);
+    print('save data when new game is created');
+    saveData('qq', json.encode(game)); // save data when new game is created
+
   }
 }
