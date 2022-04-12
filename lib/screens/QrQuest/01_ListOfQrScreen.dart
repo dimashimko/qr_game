@@ -12,6 +12,7 @@ class ListOfQrScreen extends StatefulWidget {
   // constructor
   ListOfQrScreen(QrGame g) {
     game = g;
+    saveData('qq', json.encode(game)); // save data when new game is created
   }
 
   @override
@@ -85,13 +86,13 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print('state = $state');
-    print('************ didChangeAppLifecycleState ************');
+    print('************ ListOfQrScreen didChangeAppLifecycleState  ************');
   }
 
   @override
   void didChangeMetrics() {
     setState(() {});
-    print('************ didChangeMetrics ************');
+    print('************ ListOfQrScreen didChangeMetrics  ************');
 
     // This will be triggered by changes in orientation.
   }
@@ -100,14 +101,14 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
   void initState() {
     super.initState();
     // WidgetsBinding.instance.addObserver(this);
-    print('************ initState ************');
+    print('************ ListOfQrScreen initState  ************');
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // WidgetsBinding.instance.addObserver(this);
-    print('************ didChangeDependencies  ************');
+    print('************ ListOfQrScreen didChangeDependencies  ************');
   }
 
   @override
@@ -115,19 +116,19 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     saveData('qq', json.encode(widget.game));
 
     super.deactivate();
-    print('************ deactivate ************');
+    print('************ ListOfQrScreen deactivate  ************');
   }
 
   @override
   void dispose() {
-    saveData('qq', json.encode(widget.game));
+    // saveData('qq', json.encode(widget.game));
 
     // WidgetsBinding.instance.removeObserver(this);
     super.dispose();
-    print('************ dispose ************');
+    print('************ ListOfQrScreen dispose  ************');
   }
 }
 
 void didChangeAppLifecycleState(AppLifecycleState state) {
-  print('hihihi');
+  print('************ ListOfQrScreen didChangeAppLifecycleState  ************');
 }
