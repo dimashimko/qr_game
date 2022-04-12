@@ -7,6 +7,13 @@ import 'package:qr_game/utilities/constants.dart';
 import 'package:qr_game/utilities/save_load_Data.dart';
 
 class SettingScreen extends StatefulWidget {
+  var rd;
+
+  // constructor
+  SettingScreen(refreshData){
+    rd = refreshData;
+  }
+
   @override
   _SettingScreenState createState() => _SettingScreenState();
 }

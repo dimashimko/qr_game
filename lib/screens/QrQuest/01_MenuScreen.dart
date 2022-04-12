@@ -101,7 +101,7 @@ class _MenuScreenState extends State<MenuScreen> {
   // New Game
   void _goToSettingScreen(BuildContext context) async {
     Route routeToSettingScreen =
-    MaterialPageRoute(builder: (context) => SettingScreen());
+    MaterialPageRoute(builder: (context) => SettingScreen(refreshData()));
     await Navigator.push(context, routeToSettingScreen);
 
 /*    setState(() {
