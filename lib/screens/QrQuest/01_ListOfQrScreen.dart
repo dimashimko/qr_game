@@ -8,12 +8,10 @@ import 'package:qr_game/widgets/qrItem.dart';
 
 class ListOfQrScreen extends StatefulWidget {
   QrGame game = QrGame(0, 0);
+  var refreshDataCallBack;
 
   // constructor
-  ListOfQrScreen(QrGame g) {
-    game = g;
-
-  }
+  ListOfQrScreen(this.game, this.refreshDataCallBack);
 
   @override
   _ListOfQrScreenState createState() => _ListOfQrScreenState();
@@ -73,11 +71,11 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
       if (number == widget.game.list[index].number) {
         widget.game.list[index].isFound = true;
         print('save data when new qr was found');
-        saveData('qq', json.encode(widget.game)); // save data when new qr was found
+        saveData(
+            'qq', json.encode(widget.game)); // save data when new qr was found
       }
     });
   }
-
 
 /*  @protected
   void didUpdateWidget(Home oldWidget) {
@@ -87,7 +85,8 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print('state = $state');
-    print('************ ListOfQrScreen didChangeAppLifecycleState  ************');
+    print(
+        '************ ListOfQrScreen didChangeAppLifecycleState  ************');
   }
 
   @override
@@ -114,9 +113,16 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
 
   @override
   void deactivate() {
-    print('save data when ListOfQrScreen is close');
-    saveData('qq', json.encode(widget.game)); // save data when screen is close
+    if(widget.game.getNumberOfFoundCodes() == widget.game.quantity){
+      print('save data when game over');
+      saveData('qq', ''); // save data when game over
+    } else {
+      print('save data when ListOfQrScreen is close');
+      saveData('qq', json.encode(widget.game)); // save data when screen is close
+    }
 
+    print('trying refresh data');
+    widget.refreshDataCallBack();
     super.deactivate();
     print('************ ListOfQrScreen deactivate  ************');
   }

@@ -42,7 +42,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         // onPressed: () => print(snapshot.requireData),
 
                         onPressed: snapshot.hasData
-                            ? () => _resumeGame(context, snapshot.requireData)
+                            ? () => _resumeGame(context)
                             : null,
 /*
                         onPressed: () {
@@ -70,18 +70,15 @@ class _MenuScreenState extends State<MenuScreen> {
         ));
   }
 
-  _resumeGame(BuildContext context, QrGame oldGameFromSnapshot) async {
+  _resumeGame(BuildContext context) async {
     print('loadGame when button Resume pressed');
 
     QrGame oldGameLast = await loadGame();
 
-    Route routeToListOfQr =
-        MaterialPageRoute(builder: (context) => ListOfQrScreen(oldGameFromSnapshot));
+    Route routeToListOfQr = MaterialPageRoute(
+        builder: (context) => ListOfQrScreen(oldGameLast, refreshData));
     Navigator.push(context, routeToListOfQr);
-
   }
-
-
 
   Future<QrGame> loadGame() async {
     final savedGameStr = await loadData('qq');
@@ -94,14 +91,17 @@ class _MenuScreenState extends State<MenuScreen> {
     }
   }
 
-  refreshData(){
-    oldGame = loadGame();
+  refreshData() {
+    print('refreshData');
+    setState(() {
+      oldGame = loadGame();
+    });
   }
 
   // New Game
   void _goToSettingScreen(BuildContext context) async {
     Route routeToSettingScreen =
-    MaterialPageRoute(builder: (context) => SettingScreen(refreshData));
+        MaterialPageRoute(builder: (context) => SettingScreen(refreshData));
     await Navigator.push(context, routeToSettingScreen);
 
 /*    setState(() {
@@ -109,7 +109,6 @@ class _MenuScreenState extends State<MenuScreen> {
       savedGame = loadGame();
     });*/
   }
-
 
   // ************************************************************
   @override
