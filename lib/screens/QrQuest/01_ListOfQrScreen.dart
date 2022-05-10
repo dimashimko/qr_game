@@ -68,13 +68,29 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     int number = int.tryParse(result) ?? -1;
 
     setState(() {
-      if (number == widget.game.list[index].number) {
+      if (number == widget.game.list[index].number) { // additional check?
         widget.game.list[index].isFound = true;
         print('save data when new qr was found');
         saveData(
             'qq', json.encode(widget.game)); // save data when new qr was found
       }
     });
+  }
+
+  @override
+  void deactivate() {
+    if(widget.game.getNumberOfFoundCodes() == widget.game.quantity){
+      print('save data when game over');
+      saveData('qq', ''); // save data when game over
+    } else {
+      print('save data when ListOfQrScreen is close');
+      saveData('qq', json.encode(widget.game)); // save data when screen is close
+    }
+
+    print('refresh data');
+    widget.refreshDataCallBack();
+    super.deactivate();
+    print('************ ListOfQrScreen deactivate  ************');
   }
 
 /*  @protected
@@ -109,22 +125,6 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     super.didChangeDependencies();
     // WidgetsBinding.instance.addObserver(this);
     print('************ ListOfQrScreen didChangeDependencies  ************');
-  }
-
-  @override
-  void deactivate() {
-    if(widget.game.getNumberOfFoundCodes() == widget.game.quantity){
-      print('save data when game over');
-      saveData('qq', ''); // save data when game over
-    } else {
-      print('save data when ListOfQrScreen is close');
-      saveData('qq', json.encode(widget.game)); // save data when screen is close
-    }
-
-    print('trying refresh data');
-    widget.refreshDataCallBack();
-    super.deactivate();
-    print('************ ListOfQrScreen deactivate  ************');
   }
 
   @override

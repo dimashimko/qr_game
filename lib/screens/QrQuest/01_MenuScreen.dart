@@ -38,23 +38,19 @@ class _MenuScreenState extends State<MenuScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
-
-                        // onPressed: () => print(snapshot.requireData),
-
                         onPressed: snapshot.hasData
                             ? () => _resumeGame(context)
                             : null,
-/*
-                        onPressed: () {
+/*                        onPressed: () {
                           print('snapshot.hasData: ${snapshot.hasData}');
                           return snapshot.hasData
                             ? _resumeGame(context, snapshot.requireData)
                             : null;
-                        },*/
+                        },
 
                         // onPressed: _resumeGame(context, snapshot.data!),
                         // onPressed: null,
-                        // onPressed: null,
+                        // onPressed: null,*/
                         child: Text('Resume game')),
                     SizedBox(height: 8),
                     ElevatedButton(
