@@ -68,29 +68,54 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     int number = int.tryParse(result) ?? -1;
 
     setState(() {
-      if (number == widget.game.list[index].number) { // additional check?
+      if (number == widget.game.list[index].number) {
+        // additional check?
         widget.game.list[index].isFound = true;
         print('save data when new qr was found');
         saveData(
             'qq', json.encode(widget.game)); // save data when new qr was found
+      }
+      if (widget.game.getNumberOfFoundCodes() == widget.game.quantity) {
+        _showDialog(context);
       }
     });
   }
 
   @override
   void deactivate() {
-    if(widget.game.getNumberOfFoundCodes() == widget.game.quantity){
+    if (widget.game.getNumberOfFoundCodes() == widget.game.quantity) {
       print('save data when game over');
       saveData('qq', ''); // save data when game over
     } else {
       print('save data when ListOfQrScreen is close');
-      saveData('qq', json.encode(widget.game)); // save data when screen is close
+      saveData(
+          'qq', json.encode(widget.game)); // save data when screen is close
     }
 
     print('refresh data');
     widget.refreshDataCallBack();
     super.deactivate();
     print('************ ListOfQrScreen deactivate  ************');
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Congratulation!'),
+          content: Text('${widget.game.quantity}/${widget.game.quantity} Quest finished! '),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
 /*  @protected
@@ -136,6 +161,8 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     print('************ ListOfQrScreen dispose  ************');
   }
 }
+
+
 
 void didChangeAppLifecycleState(AppLifecycleState state) {
   print('************ ListOfQrScreen didChangeAppLifecycleState  ************');

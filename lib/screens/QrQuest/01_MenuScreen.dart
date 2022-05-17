@@ -76,6 +76,13 @@ class _MenuScreenState extends State<MenuScreen> {
     Navigator.push(context, routeToListOfQr);
   }
 
+  refreshData() { // need to make the button grey? yes!
+    print('refreshData');
+    setState(() {
+      oldGame = loadGame();
+    });
+  }
+
   Future<QrGame> loadGame() async {
     final savedGameStr = await loadData('qq');
 
@@ -85,13 +92,6 @@ class _MenuScreenState extends State<MenuScreen> {
     } else {
       throw Exception('Error: ${'No saved game'}');
     }
-  }
-
-  refreshData() {
-    print('refreshData');
-    setState(() {
-      oldGame = loadGame();
-    });
   }
 
   // New Game

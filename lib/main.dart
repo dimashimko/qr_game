@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_game/screens/QrQuest/01_SettingScreen.dart';
 import 'screens/TitleScreen.dart';
 import 'theme/mainTheme.dart';
 
@@ -12,6 +11,7 @@ void main() {
   ));
 }
 
+// 20/20 Quest finished! Congratulation!
 
 // Экраны в Flutter называются route.
 // MaterialPageRoute() — Модальный route, который заменяет весь экран адаптивным к платформе переходом анимации.
