@@ -55,6 +55,7 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
 
   goToScannerCallBack(int index) {
     _goToQrScanner(context, index);
+    // _showCongratulationDialog(context);
   }
 
   void _goToQrScanner(BuildContext context, int index) async {
@@ -76,7 +77,7 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
             'qq', json.encode(widget.game)); // save data when new qr was found
       }
       if (widget.game.getNumberOfFoundCodes() == widget.game.quantity) {
-        _showDialog(context);
+        _showCongratulationDialog(context);
       }
     });
   }
@@ -98,13 +99,21 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     print('************ ListOfQrScreen deactivate  ************');
   }
 
-  void _showDialog(BuildContext context) {
+  void _showCongratulationDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          // backgroundColor: Colors.green,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(4.0))),
+          contentPadding: EdgeInsets.only(top: 0.0),
           title: Text('Congratulation!'),
-          content: Text('${widget.game.quantity}/${widget.game.quantity} Quest finished! '),
+          content: Container(
+            padding: EdgeInsets.all(16),
+            child: Text(
+                '${widget.game.quantity}/${widget.game.quantity} \nQuest finished! '),
+          ),
           actions: <Widget>[
             ElevatedButton(
               child: Text('Ok'),
@@ -161,8 +170,6 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     print('************ ListOfQrScreen dispose  ************');
   }
 }
-
-
 
 void didChangeAppLifecycleState(AppLifecycleState state) {
   print('************ ListOfQrScreen didChangeAppLifecycleState  ************');
