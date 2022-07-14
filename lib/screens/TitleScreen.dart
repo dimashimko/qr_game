@@ -52,7 +52,6 @@ class _TitleScreenState extends State<TitleScreen> {
                   ),
                 ),
                 onPressed: () {
-
                 }),
             SizedBox(
               height: 8.0,
@@ -77,6 +76,9 @@ class _TitleScreenState extends State<TitleScreen> {
       ),
     );
   }
+
+
+
 
   // 01 QrQuest
   void _goToQrQuest(BuildContext context) async {

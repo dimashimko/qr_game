@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:qr_game/screens/QrQuest/01_ListOfQrScreen.dart';
+import 'models/QrGame.dart';
 import 'screens/TitleScreen.dart';
 import 'theme/mainTheme.dart';
 
 void main() {
+  QrGame game = QrGame(3, 2);
+
   runApp(MaterialApp(
     title: 'Returned Pass Data',
     theme: myMainTheme,
-    home: TitleScreen(),
+    // home: TitleScreen(),
+    home:   ListOfQrScreen(game, refresh()),
     // home: SettingScreen(),
   ));
 }
+
+ refresh(){}
+
 
 // 20/20 Quest finished! Congratulation!
 
