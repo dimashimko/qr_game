@@ -27,7 +27,8 @@ class _MenuScreenState extends State<MenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('QrQuest'),
+          // title: Text('QrQuest'),
+          title: Text('MenuScreen'),
           centerTitle: true,
         ),
         body: FutureBuilder<QrGame>(
@@ -38,9 +39,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
-                        onPressed: snapshot.hasData
-                            ? () => _resumeGame(context)
-                            : null,
+                        onPressed: snapshot.hasData? () => _resumeGame(context): null,
 /*                        onPressed: () {
                           print('snapshot.hasData: ${snapshot.hasData}');
                           return snapshot.hasData
@@ -105,6 +104,20 @@ class _MenuScreenState extends State<MenuScreen> {
       savedGame = loadGame();
     });*/
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ************************************************************
   @override

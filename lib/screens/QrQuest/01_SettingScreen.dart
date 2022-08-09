@@ -7,9 +7,9 @@ import 'package:qr_game/utilities/constants.dart';
 import 'package:qr_game/utilities/save_load_Data.dart';
 
 class SettingScreen extends StatefulWidget {
-  late final rd;
+  late final refreshDataCallBack;
   SettingScreen(Function() refreshData){
-    rd = refreshData;
+    refreshDataCallBack = refreshData;
   }
 
   @override
@@ -90,7 +90,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
     Route routeToListOfQr = MaterialPageRoute(
         builder: (context) =>
-            ListOfQrScreen(game, widget.rd));
+            ListOfQrScreen(game, widget.refreshDataCallBack));
 
     Navigator.pushReplacement(context, routeToListOfQr);
     print('save data when new game is created');

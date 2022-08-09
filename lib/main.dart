@@ -10,14 +10,13 @@ void main() {
   runApp(MaterialApp(
     title: 'Returned Pass Data',
     theme: myMainTheme,
-    // home: TitleScreen(),
-    home:   ListOfQrScreen(game, refresh()),
+    home: TitleScreen(),
+    // home:   ListOfQrScreen(game, refresh()),
     // home: SettingScreen(),
   ));
 }
 
- refresh(){}
-
+refresh() {}
 
 // 20/20 Quest finished! Congratulation!
 

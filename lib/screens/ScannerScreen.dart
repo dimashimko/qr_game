@@ -49,6 +49,7 @@ class _QRViewExampleState extends State<QRViewExample> {
     super.reassemble();
     if (Platform.isAndroid) {
       controller!.pauseCamera();
+      // controller!.resumeCamera();
     }
     controller!.resumeCamera();
   }
@@ -120,7 +121,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                         child: ElevatedButton(
                           onPressed: () async {
                             await controller?.pauseCamera();
-                            Navigator.pop(context, result?.code);
+                            // Navigator.pop(context, result?.code);
 
                           },
                           child: const Text('pause',
@@ -171,6 +172,7 @@ class _QRViewExampleState extends State<QRViewExample> {
 
   void _onQRViewCreated(QRViewController controller) {
     setState(() {
+      controller.resumeCamera();
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {

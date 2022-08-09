@@ -132,6 +132,14 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     super.didUpdateWidget(oldWidget);
   }*/
 
+
+
+
+
+
+
+
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print('state = $state');
