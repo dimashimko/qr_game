@@ -8,10 +8,10 @@ import 'package:qr_game/widgets/qrItem.dart';
 
 class ListOfQrScreen extends StatefulWidget {
   QrGame game = QrGame(0, 0);
-  var refreshDataCallBack;
+  var callBackRefreshData;
 
   // constructor
-  ListOfQrScreen(this.game, this.refreshDataCallBack);
+  ListOfQrScreen(this.game, this.callBackRefreshData);
 
   @override
   _ListOfQrScreenState createState() => _ListOfQrScreenState();
@@ -34,8 +34,8 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
         padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: ListView.separated(
           scrollDirection: Axis.vertical,
-          separatorBuilder: (context, index) => SizedBox(height: 8),
           itemCount: widget.game.quantity,
+          separatorBuilder: (context, index) => SizedBox(height: 8),
           itemBuilder: (context, index) => Container(
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             // width: 160,
@@ -94,7 +94,7 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     }
 
     print('refresh data');
-    widget.refreshDataCallBack();
+    widget.callBackRefreshData();
     super.deactivate();
     print('************ ListOfQrScreen deactivate  ************');
   }

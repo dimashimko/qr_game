@@ -5,7 +5,8 @@ import 'screens/TitleScreen.dart';
 import 'theme/mainTheme.dart';
 
 void main() {
-  QrGame game = QrGame(3, 2);
+  QrGame game = QrGame(30, 2);
+  game.list[0].isFound=true;
 
   runApp(MaterialApp(
     title: 'Returned Pass Data',

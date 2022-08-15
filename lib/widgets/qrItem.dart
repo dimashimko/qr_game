@@ -2,57 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:qr_game/models/QrGame.dart';
 
 Widget qrItem(context, QrGame game, int index, ValueChanged<int> goToScanner) {
+  // double widthBlock = MediaQuery.of(context).size.width/4;
+  // double widthBlock = 70;
+  // print('widthBlock: $widthBlock');
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    crossAxisAlignment: CrossAxisAlignment.center,
+    // crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-/*          Text(
-            '${index + 1}',
-          ),
-          SizedBox(
-            width: 8,
-          ),*/
           Image(
             image: AssetImage('asset/images/qrQuestion.png'),
           ),
+          SizedBox(width: 64,),
+          Text(
+            '${game.list[index].number}',
+          ),
         ],
       ),
-      Text(
-        '${game.list[index].number}',
-      ),
-      getWidget(
+      getActionButton(
           index.compareTo(game.getNumberOfFoundCodes()), goToScanner, index),
-
-/*      ElevatedButton(
-        onPressed: () {
-          if (game.getNumberOfFoundCodes() == index) {
-            goToScanner(index);
-          }
-        },
-        child: Row(
-          children: [
-            Text(
-              game.list[index].isFound ? 'Found ' : 'Find ',
-            ),
-            Icon(game.list[index].isFound ? Icons.check : Icons.arrow_forward),
-          ],
-        ),
-        style: getButtonStyle(index.compareTo(game.getNumberOfFoundCodes())),
-      ),*/
     ],
   );
 }
 
-// style: ElevatedButton.styleFrom(
-// primary: game.list[index].isFound ? Colors.green : Colors.blue,
-// primary: getColor(game.getNumberOfFoundCodes(), index),
-// ),
-
-Widget getWidget(int numOfStyle, ValueChanged<int> goToScanner, int index) {
+Widget getActionButton(
+    int numOfStyle, ValueChanged<int> goToScanner, int index) {
   if (numOfStyle < 0) {
     // -1
     return Row(
