@@ -6,6 +6,8 @@ import 'package:qr_game/models/QrGame.dart';
 import 'package:qr_game/utilities/constants.dart';
 import 'package:qr_game/utilities/save_load_Data.dart';
 
+import '../../generated/l10n.dart';
+
 class SettingScreen extends StatefulWidget {
   late final refreshDataCallBack;
   SettingScreen(Function() refreshData){
@@ -34,7 +36,7 @@ class _SettingScreenState extends State<SettingScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
-                'Number of QrCodes: ${_quantity.round()}',
+                '${ S.of(context).number_of_qr_codes} ${_quantity.round()}',
               ),
             ),
             Center(
@@ -54,7 +56,7 @@ class _SettingScreenState extends State<SettingScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
-                'Range of QrCodes: ${_range.round()}',
+                '${S.of(context).range_of_codes} ${_range.round()}',
               ),
             ),
             Center(

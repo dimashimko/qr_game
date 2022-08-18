@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../generated/l10n.dart';
 import 'QrQuest/01_MenuScreen.dart';
 
 class TitleScreen extends StatefulWidget {
@@ -7,14 +8,15 @@ class TitleScreen extends StatefulWidget {
 }
 
 class _TitleScreenState extends State<TitleScreen> {
-  String text = 'Party games:';
-  int widthButtonPercent = 80;
-
   @override
   Widget build(BuildContext context) {
+    int widthButtonPercent = 70;
+    double widthOfButton =
+        MediaQuery.of(context).size.width * (widthButtonPercent / 100);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(text),
+        title: Text(S.of(context).name_game),
         centerTitle: true,
       ),
       body: Center(
@@ -23,18 +25,17 @@ class _TitleScreenState extends State<TitleScreen> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(32.0),
-              child: Container(child: Text(text),),
+              child: Container(
+                child: Text(S.of(context).activity_games_with_scanner),
+              ),
             ),
 
             // 01 QrQuest
             ElevatedButton(
                 child: Container(
-                  width: MediaQuery.of(context).size.width *
-                      (widthButtonPercent / 100),
+                  width: widthOfButton,
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'QrQuest',
-                  ),
+                  child: Text(S.of(context).game_qr_quest),
                 ),
                 onPressed: () => _goToQrQuest(context)),
             SizedBox(
@@ -44,15 +45,11 @@ class _TitleScreenState extends State<TitleScreen> {
             // 02 NumericalQuest
             ElevatedButton(
                 child: Container(
-                  width: MediaQuery.of(context).size.width *
-                      (widthButtonPercent / 100),
+                  width: widthOfButton,
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'NumericalQuest',
-                  ),
+                  child: Text(S.of(context).game_numerical_quest),
                 ),
-                onPressed: () {
-                }),
+                onPressed: null),
             SizedBox(
               height: 8.0,
             ),
@@ -60,14 +57,13 @@ class _TitleScreenState extends State<TitleScreen> {
             // 03 CaptureTheFlag
             ElevatedButton(
                 child: Container(
-                  width: MediaQuery.of(context).size.width *
-                      (widthButtonPercent / 100),
+                  width: widthOfButton,
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'CaptureTheFlag',
+                    S.of(context).capture_the_flag,
                   ),
                 ),
-                onPressed: () {}),
+                onPressed: null),
             SizedBox(
               height: 8.0,
             ),
@@ -77,13 +73,10 @@ class _TitleScreenState extends State<TitleScreen> {
     );
   }
 
-
-
-
   // 01 QrQuest
   void _goToQrQuest(BuildContext context) async {
-
-    Route routeToQrQuest = MaterialPageRoute(builder: (context) => MenuScreen());
+    Route routeToQrQuest =
+        MaterialPageRoute(builder: (context) => MenuScreen());
     Navigator.push(context, routeToQrQuest);
   }
 }

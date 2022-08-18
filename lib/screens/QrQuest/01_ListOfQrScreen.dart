@@ -6,6 +6,8 @@ import 'package:qr_game/screens/ScannerScreen.dart';
 import 'package:qr_game/utilities/save_load_Data.dart';
 import 'package:qr_game/widgets/qrItem.dart';
 
+import '../../generated/l10n.dart';
+
 class ListOfQrScreen extends StatefulWidget {
   QrGame game = QrGame(0, 0);
   var callBackRefreshData;
@@ -20,14 +22,13 @@ class ListOfQrScreen extends StatefulWidget {
 class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     with
         WidgetsBindingObserver {
-  String textOnAppBar = 'ListOfQrScreen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            'List Of Qr  Found: [${widget.game.getNumberOfFoundCodes()}/ ${widget.game.quantity}]'),
+            '${S.of(context).list_of_qr_found} [${widget.game.getNumberOfFoundCodes()}/ ${widget.game.quantity}]'),
         centerTitle: true,
       ),
       body: Container(
@@ -108,15 +109,15 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(4.0))),
           contentPadding: EdgeInsets.only(top: 0.0),
-          title: Text('Congratulation!'),
+          title: Text(S.of(context).congratulation),
           content: Container(
             padding: EdgeInsets.all(16),
             child: Text(
-                '${widget.game.quantity}/${widget.game.quantity} \nQuest finished! '),
+                '${widget.game.quantity}/${widget.game.quantity} \n${S.of(context).quest_finished} '),
           ),
           actions: <Widget>[
             ElevatedButton(
-              child: Text('Ok'),
+              child: Text(S.of(context).ok),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -127,10 +128,6 @@ class _ListOfQrScreenState extends State<ListOfQrScreen> // for to redraw items
     );
   }
 
-/*  @protected
-  void didUpdateWidget(Home oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }*/
 
 
 

@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:qr_game/screens/QrQuest/01_ListOfQrScreen.dart';
+import 'generated/l10n.dart';
 import 'models/QrGame.dart';
 import 'screens/TitleScreen.dart';
 import 'theme/mainTheme.dart';
 
 void main() {
   QrGame game = QrGame(30, 2);
-  game.list[0].isFound=true;
+  game.list[0].isFound = true;
 
   runApp(MaterialApp(
-    title: 'Returned Pass Data',
+    localizationsDelegates: [
+      S.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
+    supportedLocales: S.delegate.supportedLocales,
+    // title: 'Returned Pass Data',
     theme: myMainTheme,
     home: TitleScreen(),
     // home:   ListOfQrScreen(game, refresh()),

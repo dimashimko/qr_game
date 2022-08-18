@@ -1,0 +1,18 @@
+{
+  "name_game": "Active games:",
+  "activity_games_with_scanner": "Active games width scanner:",
+  "game_qr_quest": "Quest - Find the numbers",
+  "game_numerical_quest": "NumericalQuest (in developing)",
+  "capture_the_flag": "CaptureTheFlag (in developing)",
+  "continue_game": "Continue game",
+  "new_game": "New game",
+  "number_of_qr_codes": "Number of QrCodes:",
+  "range_of_codes": "Range of QrCodes:",
+  "list_of_qr_found": "List Of Qr  Found:",
+  "found": "Found:",
+  "find": "Find:",
+  "ok": "Ok:",
+  "congratulation": "Congratulation:",
+  "quest_finished": "Quest finished!!!"
+
+}

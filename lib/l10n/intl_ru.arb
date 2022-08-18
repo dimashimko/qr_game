@@ -1,0 +1,20 @@
+{
+  "name_game": "Активные игры:",
+  "activity_games_with_scanner": "Активные игры со сканером:",
+  "game_qr_quest": "Квест - найди числа",
+  "game_numerical_quest": "Квест - пройди маршрут (в разработке)",
+  "capture_the_flag": "Захват флага (в разработке)",
+  "continue_game": "Продолжить игру",
+  "new_game": "Новая игра",
+  "number_of_qr_codes": "Количество кодов:",
+  "range_of_codes": "Диапазон кодов:",
+  "list_of_qr_found": "Список кодов  Найдено:",
+  "found": "Найдено",
+  "find": "Искать:",
+  "ok": "Хорошо",
+  "congratulation": "Поздравляю:",
+  "quest_finished": "Квест окончен!!!"
+
+
+
+}

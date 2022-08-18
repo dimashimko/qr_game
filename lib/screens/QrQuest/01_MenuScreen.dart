@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_game/models/QrGame.dart';
 import 'package:qr_game/utilities/save_load_Data.dart';
 
+import '../../generated/l10n.dart';
 import '01_ListOfQrScreen.dart';
 import '01_SettingScreen.dart';
 
@@ -28,7 +29,7 @@ class _MenuScreenState extends State<MenuScreen> {
     return Scaffold(
         appBar: AppBar(
           // title: Text('QrQuest'),
-          title: Text('MenuScreen'),
+          title: Text(S.of(context).game_qr_quest),
           centerTitle: true,
         ),
         body: FutureBuilder<QrGame>(
@@ -39,28 +40,18 @@ class _MenuScreenState extends State<MenuScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ElevatedButton(
-                        onPressed: snapshot.hasData? () => _resumeGame(context): null,
-/*                        onPressed: () {
-                          print('snapshot.hasData: ${snapshot.hasData}');
-                          return snapshot.hasData
-                            ? _resumeGame(context, snapshot.requireData)
-                            : null;
-                        },
-
-                        // onPressed: _resumeGame(context, snapshot.data!),
-                        // onPressed: null,
-                        // onPressed: null,*/
-                        child: Text('Resume game')),
+                        onPressed: snapshot.hasData
+                            ? () => _resumeGame(context)
+                            : null,
+                        child: Text(S.of(context).continue_game)),
                     SizedBox(height: 8),
                     ElevatedButton(
                         onPressed: () {
                           _goToSettingScreen(context);
                         },
-                        child: Text('New Game')),
+                        child: Text(S.of(context).new_game)),
                   ]),
             );
-
-            // return const Center(child: CircularProgressIndicator());
           },
         ));
   }
@@ -75,7 +66,7 @@ class _MenuScreenState extends State<MenuScreen> {
     Navigator.push(context, routeToListOfQr);
   }
 
-  refreshData() { // need to make the button grey? yes!
+  refreshData() {
     print('refreshData');
     setState(() {
       oldGame = loadGame();
@@ -98,72 +89,5 @@ class _MenuScreenState extends State<MenuScreen> {
     Route routeToSettingScreen =
         MaterialPageRoute(builder: (context) => SettingScreen(refreshData));
     await Navigator.push(context, routeToSettingScreen);
-
-/*    setState(() {
-      print('bbbbbbbbbbbb');
-      savedGame = loadGame();
-    });*/
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // ************************************************************
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    print('state = $state');
-    print('************ MenuScreen didChangeAppLifecycleState  ************');
-  }
-
-  @override
-  void didChangeMetrics() {
-    setState(() {});
-    print('************ MenuScreen didChangeMetrics  ************');
-
-    // This will be triggered by changes in orientation.
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // WidgetsBinding.instance.addObserver(this);
-    print('************ MenuScreen didChangeDependencies  ************');
-  }
-
-  @override
-  void deactivate() {
-    super.deactivate();
-    print('************ MenuScreen deactivate  ************');
-  }
-
-  @override
-  void dispose() {
-    // WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-    print('************ MenuScreen dispose  ************');
   }
 }
-
-void didChangeAppLifecycleState(AppLifecycleState state) {
-  print('hihihi');
-}
-
-/*  // Resume
-  void _resumeGame(BuildContext context) async {
-    var gameStr = await loadData('qq');
-*/ /*    QrGame game = QrGame.fromJson(json.decode(
-        '{"quantity":3,"range":10,"list":[{"number":1,"isFound":false},{"number":2,"isFound":true},{"number":3,"isFound":false}]}'));*/ /*
-    QrGame game = QrGame.fromJson(json.decode(gameStr));
-
-  }*/

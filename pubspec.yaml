@@ -22,6 +22,8 @@ environment:
    sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
 
@@ -32,6 +34,7 @@ dependencies:
   qr_code_scanner: ^1.0.0
   path_provider: ^2.0.10
   shared_preferences: ^2.0.15
+  intl: ^0.17.0
 
 
 dev_dependencies:
@@ -86,3 +89,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

@@ -33,6 +33,7 @@ ThemeData myMainTheme = ThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     ),
   ),
+
   textTheme: TextTheme(
     bodyText2: TextStyle(
       fontFamily: 'Leto',

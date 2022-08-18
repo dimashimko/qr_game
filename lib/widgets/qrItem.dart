@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qr_game/models/QrGame.dart';
 
+import '../generated/l10n.dart';
+
 Widget qrItem(context, QrGame game, int index, ValueChanged<int> goToScanner) {
   // double widthBlock = MediaQuery.of(context).size.width/4;
   // double widthBlock = 70;
@@ -16,25 +18,27 @@ Widget qrItem(context, QrGame game, int index, ValueChanged<int> goToScanner) {
           Image(
             image: AssetImage('asset/images/qrQuestion.png'),
           ),
-          SizedBox(width: 64,),
+          SizedBox(
+            width: 64,
+          ),
           Text(
             '${game.list[index].number}',
           ),
         ],
       ),
-      getActionButton(
-          index.compareTo(game.getNumberOfFoundCodes()), goToScanner, index),
+      getActionButton(index.compareTo(game.getNumberOfFoundCodes()),
+          goToScanner, index, context),
     ],
   );
 }
 
 Widget getActionButton(
-    int numOfStyle, ValueChanged<int> goToScanner, int index) {
+    int numOfStyle, ValueChanged<int> goToScanner, int index, context) {
   if (numOfStyle < 0) {
     // -1
     return Row(
       children: [
-        Text('Found '),
+        Text(S.of(context).found),
         Icon(
           Icons.check,
           color: Color(0xFF995511),
@@ -49,9 +53,7 @@ Widget getActionButton(
       },
       child: Row(
         children: [
-          Text(
-            'Find ',
-          ),
+          Text(S.of(context).find),
           Icon(
             Icons.arrow_forward,
           ),
